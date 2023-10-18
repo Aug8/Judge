@@ -1,0 +1,38 @@
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+.Question {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.problem {
+    box-sizing: border-box;
+    overflow: auto;
+    max-width: 50%;
+    height: 100vh;
+    padding: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 20px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.desc {
+    font-size: 15px;
+}
+
+
+.code {
+    width: 50%;
+    height: 100vh;
+}
+
+.CodeMirror {
+    height: 95vh;
+}

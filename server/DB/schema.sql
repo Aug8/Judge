@@ -64,13 +64,13 @@ INSERT INTO User values
   ('test4', 'password');
 
 INSERT INTO Question(userID, title, detail) values
-  ('test1', 'title1', 'desc'),
+  ('test1', '출력 연습', 'print문을 사용해보자!'),
   ('test1', 'title2', 'desc'),
   ('test1', 'title3', 'desc'),
   ('test2', 'title4', 'desc');
 
 INSERT INTO TestCase(questionID, testinput, testoutput) values
-  (1, 'input', 'output'),
+  (1, '', 'Hello World!'),
   (1, 'input2', 'output2'),
   (2, 'input3', 'output3');
 
