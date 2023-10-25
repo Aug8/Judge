@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/blackboard.css";
@@ -7,21 +8,36 @@ import "../styles/QuestionStyle.css";
 import axios from "axios";
 
 function Question() {
+  const { qID } = useParams();
   const [data, setData] = useState({ title: "title", detail: "detail" });
   const [code, setCode] = useState("");
 
   useEffect(() => {
     const getQuestion = async () => {
-      await axios.get(`http://localhost:4000/questionAPI`).then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      });
+      await axios
+        .get(`http://localhost:4000/questionAPI/${qID}`)
+        .then((res) => {
+          console.log(res.data);
+          setData(res.data);
+        });
     };
     getQuestion();
   }, []);
 
   const handleCodeChange = (editor, data, newCode) => {
     setCode(newCode);
+  };
+
+  const onSubmitCode = async (e) => {
+    await axios
+      .post(
+        `http://localhost:4000/codeAPI/submit`,
+        { qId: qID, code: code },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res.status);
+      });
   };
 
   return (
@@ -67,8 +83,9 @@ function Question() {
         </div>
       </div>
       <div className="code">
-        <button className="codebutton">실행</button>
-        <button className="codebutton">제출</button>
+        <button className="codebutton" onClick={onSubmitCode}>
+          제출
+        </button>
         <CodeMirror
           value={code}
           onBeforeChange={handleCodeChange}
