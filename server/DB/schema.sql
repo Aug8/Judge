@@ -42,7 +42,7 @@ CREATE TABLE Solve (
   `solveID` INT NOT NULL AUTO_INCREMENT,
   `userID` VARCHAR(20) NOT NULL,
   `questionID` INT NOT NULL,
-  `answer` VARCHAR(1000),
+  `code` TEXT,
   `result` TINYINT(1),
   `feedback` VARCHAR(500),
   PRIMARY KEY (`solveID`),
@@ -74,7 +74,7 @@ INSERT INTO TestCase(questionID, testinput, testoutput) values
   (1, 'input2', 'output2'),
   (2, 'input3', 'output3');
 
-INSERT INTO Solve(userID, questionID, answer, result, feedback) values
-  ('test1', 4, 'answer', 0, 'feedback'),
-  ('test2', 1, 'answer2', 0, 'feedback'),
-  ('test2', 2, 'answer3', 1, 'feedback');
+INSERT INTO Solve(userID, questionID, code, result, feedback) values
+  ('test1', 4, 'code', 0, 'feedback'),
+  ('test2', 1, 'code2', 0, 'feedback'),
+  ('test2', 2, 'code3', 1, 'feedback');
