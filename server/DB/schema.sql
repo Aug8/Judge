@@ -71,7 +71,7 @@ INSERT INTO Question(userID, title, detail) values
 
 INSERT INTO TestCase(questionID, testinput, testoutput) values
   (1, '', 'Hello World!'),
-  (1, 'input2', 'output2'),
+  (2, 'input2', 'output2'),
   (2, 'input3', 'output3');
 
 INSERT INTO Solve(userID, questionID, code, result, feedback) values

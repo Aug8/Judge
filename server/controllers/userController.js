@@ -10,7 +10,7 @@ export const postLogin = (req, res) => {
         res.status(500).json({ success: false, error: "login ERROR" });
       } else {
         const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
-          expiresIn: "30m",
+          expiresIn: "5h",
         });
         console.log(token);
         res.cookie("jwt", token);
