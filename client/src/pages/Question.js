@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/blackboard.css";
@@ -8,6 +8,8 @@ import "../styles/QuestionStyle.css";
 import axios from "axios";
 
 function Question() {
+  const navigate = useNavigate();
+
   const { qID } = useParams();
   const [data, setData] = useState({ title: "title", detail: "detail" });
   const [code, setCode] = useState("");
@@ -38,6 +40,7 @@ function Question() {
       .then((res) => {
         console.log(res.status);
       });
+    navigate(`/question/${qID}/result`);
   };
 
   return (
