@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/blackboard.css";
+import "codemirror/mode/python/python";
+import "../styles/ResultStyle.css";
 import axios from "axios";
 
 function Result() {
@@ -22,7 +26,8 @@ function Result() {
 
   return (
     <div className="Result">
-      <div>{data}</div>
+      <div>{data.code}</div>
+      <div>{data.feedback}</div>
     </div>
   );
 }
