@@ -23,10 +23,15 @@ export const getList = (req, res) => {
 };
 
 export const getTestCase = (req, res) => {
-  db.query(`select * from TestCase where questionID = 1`, (err, results) => {
-    if (err) {
-      res.status(500).json({ error: "getTestCase ERROR" });
+  const id = req.params.id;
+
+  db.query(
+    `select * from TestCase where questionID = ${id}`,
+    (err, results) => {
+      if (err) {
+        res.status(500).json({ error: "getTestCase ERROR" });
+      }
+      res.send(results);
     }
-    res.send(results[0]);
-  });
+  );
 };

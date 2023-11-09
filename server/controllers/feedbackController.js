@@ -14,11 +14,12 @@ export const getFeedback = (req, res) => {
   }
 
   db.query(
-    `SELECT feedback FROM Solve where userID = '${user}' and questionID = ${qId} ORDER BY solveID DESC LIMIT 1`,
+    `SELECT code, feedback FROM Solve where userID = '${user}' and questionID = ${qId} ORDER BY solveID DESC LIMIT 1`,
     (err, results) => {
       if (err) {
         print(err);
       }
+      res.send(results[0]);
       console.log(results);
     }
   );

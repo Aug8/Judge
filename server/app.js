@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import test from "./routes/test.js";
 import questionRouter from "./routes/questionRouter.js";
 import userRouter from "./routes/userRouter.js";
 import codeRouter from "./routes/codeRouter.js";
@@ -14,7 +13,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
-app.use("/testAPI", test);
 app.use("/questionAPI", questionRouter);
 app.use("/userAPI", userRouter);
 app.use("/codeAPI", codeRouter);
