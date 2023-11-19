@@ -1,0 +1,14 @@
+.result {
+    display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.code {
+    min-width: 300px;
+
+}
+
+.feedback {
+    line-height: 20px;
+}

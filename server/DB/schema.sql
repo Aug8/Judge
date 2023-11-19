@@ -65,14 +65,14 @@ INSERT INTO User values
 
 INSERT INTO Question(userID, title, detail) values
   ('test1', '출력 연습', 'print문을 사용해보자!'),
-  ('test1', 'title2', 'desc'),
+  ('test1', '반복문 연습', '반복문을 사용해 1부터 9까지의 숫자를 출력하시오.'),
   ('test1', 'title3', 'desc'),
   ('test2', 'title4', 'desc');
 
 INSERT INTO TestCase(questionID, testinput, testoutput) values
   (1, '', 'Hello World!'),
-  (2, 'input2', 'output2'),
-  (2, 'input3', 'output3');
+  (2, '', '123456789'),
+  (3, 'input3', 'output3');
 
 INSERT INTO Solve(userID, questionID, code, result, feedback) values
   ('test1', 4, 'code', 0, 'feedback'),

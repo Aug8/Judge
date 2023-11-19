@@ -19,8 +19,10 @@ export const postCode = (req, res) => {
   const { qId, code } = req.body;
   const eCode = escapeCode(code);
 
+  let execerror = "";
   exec(`python -c "${eCode}"`, (error, stdout, stderr) => {
     if (error) {
+      execerror = error.message;
       console.log("Python execution error", error.message);
     } else {
       console.log("stdout:", stdout);
@@ -84,15 +86,15 @@ async function chatGPT(question, testcase, eCode) {
       {
         role: "system",
         content:
-          "당신은 코딩 도우미입니다. 모든 답변은 한국어로 작성되어야 합니다. 사용 언어는 Python입니다. 당신은 정답을 직접 알려줘서는 안 됩니다. 문제를 스스로 해결할 수 있도록, 간단한 조언만 제공해야 합니다. 절대 당신이 코드를 작성하지 마세요. 오직 텍스트만 사용하세요.",
+          "당신은 코딩 선생님입니다. 모든 답변은 한국어로 작성되어야 합니다. 답변 내용에 코드를 포함하면 안 됩니다. 예시를 들면 안 됩니다. 학습자가 문제를 스스로 해결할 수 있도록, 간단한 조언만 제공해야 합니다.",
       },
       {
         role: "assistant",
-        content: `"""문제: ${question}""" """테스트 케이스: ${testcase}""" """학생의 풀이: ${eCode}"""`,
+        content: `"""문제: ${question}""" """테스트 케이스: ${testcase}""" """풀이: ${eCode}"""`,
       },
       {
         role: "user",
-        content: `문제를 풀 수 있도록 도와주세요. 하지만 정답을 말해서는 안 됩니다.`,
+        content: `제가 코드를 개선할 수 있도록 조언해주세요! 제가 직접 해결하고 싶으니 정답을 알려줘서는 안 됩니다. 간접적으로 조언해 주세요. 풀이 방법은 필요 없습니다. 문제점을 짚어주세요.`,
       },
     ],
     model: "gpt-3.5-turbo",
